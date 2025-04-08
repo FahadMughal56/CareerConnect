@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CareerConnect - Results{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Job Search</h2>
+            <p>Search for your desired Job matching your skills.</p>
+            <form method="GET" action="{% url 'search_results' %}">
+                <div class="search-bar">
+                    <input type="text" name="keyword" placeholder="Job title, Keyword" value="{{ keyword }}">
+                    <input type="text" name="location" placeholder="Location" value="{{ location }}">
+                    <button type="submit">Find Job</button>
+                </div>
+            </form>
+        </div>
+            <img src="{% static 'assets/searchResultsGif.gif' %}" alt="Hero Illustration" style="height: 300px;">
+    </section>
+
+    <div class="ResultContent">
+        <div class="filter-section">
+            <h3>Filter</h3>
+
+            <div class="filter-group">
+                <div class="filter-title" onclick="toggleFilter(this)">
+                    <span>Salary Range</span>
+                    <span>+</span>
+                </div>
+                <div class="filter-group-content">
+                    <input type="text" placeholder="Min">
+                    <input type="text" placeholder="Max">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <div class="filter-title" onclick="toggleFilter(this)">
+                    <span>Job Type</span>
+                    <span>+</span>
+                </div>
+                <div class="filter-group-content">
+                    <label><input type="checkbox"> Full-Time</label>
+                    <label><input type="checkbox"> Part-Time</label>
+                    <label><input type="checkbox"> Internship</label>
+                    <label><input type="checkbox"> Contract</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <div class="filter-title" onclick="toggleFilter(this)">
+                    <span>Work Mode</span>
+                    <span>+</span>
+                </div>
+                <div class="filter-group-content">
+                    <label><input type="checkbox"> On-Site</label>
+                    <label><input type="checkbox"> Remote</label>
+                    <label><input type="checkbox"> Hybrid</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <div class="filter-title" onclick="toggleFilter(this)">
+                    <span>Experience Level</span>
+                    <span>+</span>
+                </div>
+                <div class="filter-group-content">
+                    <label><input type="checkbox"> Entry Level</label>
+                    <label><input type="checkbox"> Mid-Level</label>
+                    <label><input type="checkbox"> Senior</label>
+                </div>
+            </div>
+        </div>
+
+        <section class="search-results">
+            <h1>Search Results</h1>
+            <p>We found the following jobs based on your search:</p>
+            
+            {% if jobs %}
+            <div class="job-cards-container">
+                {% for job in jobs %}
+                <div class="job-card">
+                    <h2>{{ job.title }}</h2>
+                    <p class="company">{{ job.company }}</p>
+                    <p class="location">{{ job.location }}</p>
+                    <p class="salary">{{ job.salary }}</p>
+                    <div class="buttons">
+                        <a href="{% url 'job_details' job_id=job.id %}">
+                            <button class="view-details">View details</button>
+                          </a>
+                          
+                        <button class="apply-now">Apply now</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No jobs found matching your search criteria.</p>
+            {% endif %}
+        </section>
+    </div>
+    {% comment %} <div class="view-more"><a href="#">View more</a></div> {% endcomment %}
+    <script>
+        function toggleFilter(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('span:last-child');
+
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.textContent = '+';
+            } else {
+                content.classList.add('expanded');
+                icon.textContent = '-';
+            }
+        }
+    </script>
+    
+    {% endblock %}
+    

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CareerConnect - {{ job.title }}{% endblock %}
+
+{% block content %}
+<div class="job-details-container">
+  <!-- Job Header Section -->
+  <div class="job-header">
+    <h1>{{ job.title }}</h1>
+    <div class="company">
+      <i class="fas fa-building"></i>
+      <span>{{ job.company }}</span>
+    </div>
+  </div>
+
+  <!-- Job Info Section -->
+  <div class="job-info">
+    <div class="info-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>{{ job.location }}</span>
+    </div>
+    <div class="info-item">
+      <i class="fas fa-briefcase"></i>
+      <span>{{ job.type|default:"Full-Time" }}</span>
+    </div>
+    <div class="info-item">
+      <i class="fas fa-dollar-sign"></i>
+      <span>{{ job.salary }}</span>
+    </div>
+  </div>
+
+  <!-- Job Description Section -->
+  <div class="job-description">
+    <h2>Job Description</h2>
+    <p>{{ job.description|default:"No description available for this job." }}</p>
+    
+    <!-- More Description Section -->
+    <div class="more-description">
+      <!-- Render the more_description field as raw HTML -->
+      {{ job.more_description|safe }}
+    </div>
+  </div>
+
+  <!-- Skills Section -->
+  {% if job.skills %}
+  <div class="skills">
+    <h2>Required Skills</h2>
+    <div class="skills-list">
+      {% for skill in job.skills %}
+      <div class="skill">
+        <i class="fas fa-check-circle"></i>
+        <span>{{ skill }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Apply Section -->
+  <div class="apply-section">
+    <button class="apply-button">
+      <i class="fas fa-paper-plane"></i> Apply Now
+    </button>
+  </div>
+</div>
+{% endblock %}
