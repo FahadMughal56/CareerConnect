@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CareerConnect - Login{% endblock %}
+
+{% block content %}
+<main class="login-container">
+    <div class="login-box">
+        <div class="login-content">
+            <div class="form-section">
+                <h2>Login to your Account</h2>
+                <p>Welcome back! Select the below login methods.</p>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <label for="email">Email ID</label>
+                    <input type="text" id="email" name="email" placeholder="Enter Email ID" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                    <div class="options">
+                        <div>
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+                <p class="register-text">Don’t have an account? <a href="#">Register</a></p>
+            </div>
+            <div class="image-section">
+                <img src="{% static 'assets/login-page.png' %}" alt="Illustration">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

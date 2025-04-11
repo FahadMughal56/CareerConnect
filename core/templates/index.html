@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CareerConnect - HomePage{% endblock %}
+
+{% block content %}
+
+<style>
+/* Positioning for the search bar */
+.search-bar {
+    position: relative;
+}
+
+.suggestions-dropdown {
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: white;
+    width: 100%; /* Matches the width of the input box */
+    top: 100%;  /* Positions it just below the input box */
+    left: 0; /* Aligns it to the left of the input box */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+/* Styling for each suggestion */
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+    background-color: white;
+    border-bottom: 1px solid #f1f1f1; /* Adds a line between suggestions */
+}
+
+/* Hover effect for each suggestion */
+.suggestion-item:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the suggestions when there are results */
+.suggestions-dropdown.show {
+    display: block; /* Makes it visible */
+}
+
+/* Ensure the input box and buttons are styled */
+#search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;  /* Some spacing for better UI */
+}
+
+
+</style>
+<section class="hero">
+    <div class="hero-content">
+        <h1>Find a job that aligns with your interests and skills</h1>
+        <p>Thousands of jobs in all the leading sectors are waiting for you.</p>
+        <form method="GET" action="{% url 'search_results' %}">
+    <div class="search-bar">
+        <input type="text" id="search-input" name="keyword" placeholder="Job title, Keyword" value="{{ request.GET.keyword }}">
+        <div id="suggestions-list" class="suggestions-dropdown"></div>  <!-- Suggestions dropdown -->
+        <input type="text" name="location" placeholder="Location" value="{{ request.GET.location }}">
+        <button type="submit">Find Job</button>
+    </div>
+</form>
+
+
+        <p class="suggestions">
+            Suggestion: UX Designer, <span>Software Engineer</span>, Marketing Specialist, Full Stack Developer.
+        </p>
+    </div>
+
+    <div class="hero-image">
+        <img src="{% static 'assets/hero-bg.png' %}" alt="Hero Illustration">
+    </div>
+</section>
+
+<section class="featured-jobs">
+    <h1>Featured Jobs</h1>
+    <p>Choose jobs from the top employers and apply for the same.</p>
+    <div class="job-cards-container">
+        {% for job in jobs %}
+        <div class="job-card">
+            <h2>{{ job.title }}</h2>
+            <p class="company">{{ job.company }}</p>
+            <p class="location">{{ job.location }}</p>
+            <p class="salary">{{ job.salary }}</p>
+            <div class="buttons">
+                <a href="{% url 'job_details' job_id=job.id %}">
+                    <button class="view-details">View details</button>
+                </a>
+                <button class="apply-now">Apply now</button>
+            </div>
+        </div>
+        {% empty %}
+        <p>No featured jobs available at the moment.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- About CareerConnect Section -->
+<section class="about">
+    <div class="about-container">
+        <div class="about-content">
+            <h2>Your Career, Your Future – All in One Place</h2>
+            <p>
+                Welcome to <strong>CareerConnect</strong> – the smart job portal designed to bridge the gap between job seekers and employers.
+                Whether you’re searching for your dream job or the perfect candidate, we make the hiring process seamless, efficient, and tailored to your needs.
+            </p>
+            <h3>Why Choose CareerConnect?</h3>
+            <ul>
+                <li><strong>Smart Job Matching:</strong> AI-powered recommendations based on your skills and experience.</li>
+                <li><strong>Real-Time Job Updates:</strong> Aggregated listings from top global and local job boards.</li>
+                <li><strong>Easy Profile & Resume Upload:</strong> Showcase your skills to top recruiters.</li>
+                <li><strong>Career Growth Insights:</strong> Salary trends, market demand, and in-demand skills.</li>
+                <li><strong>Employer Solutions:</strong> AI-powered candidate search, job posting, and application tracking.</li>
+            </ul>
+            {% comment %} <a href="register.html"><button class="login-btn">Join Now</button></a> {% endcomment %}
+        </div>
+        <div class="about-image">
+            <img src="{% static 'assets/about.jpg' %}" alt="CareerConnect Platform">
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('search-input').addEventListener('input', function() {
+    var searchTerm = this.value;
+    var suggestionsList = document.getElementById('suggestions-list');
+
+    if (searchTerm) {
+        fetch(`/search-suggestions/?term=${searchTerm}`)
+            .then(response => response.json())
+            .then(suggestions => {
+                suggestionsList.innerHTML = '';  // Clear previous suggestions
+
+                if (suggestions.length > 0) {
+                    suggestionsList.classList.add('show');
+                    suggestions.forEach(function(suggestion) {
+                        var div = document.createElement('div');
+                        div.classList.add('suggestion-item');
+                        div.textContent = suggestion;
+                        div.onclick = function() {
+                            document.getElementById('search-input').value = suggestion;
+                            suggestionsList.innerHTML = '';  // Clear suggestions after selection
+                            suggestionsList.classList.remove('show');
+                        };
+                        suggestionsList.appendChild(div);
+                    });
+                } else {
+                    suggestionsList.classList.remove('show');
+                }
+            });
+    } else {
+        suggestionsList.classList.remove('show');
+    }
+});
+
+</script>
+
+
+{% endblock %}

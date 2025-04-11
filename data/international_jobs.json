@@ -1,0 +1,209 @@
+{
+    "Google": [
+      {
+        "id": 101,
+        "title": "Frontend Developer",
+        "company": "Google",
+        "location": "London, UK",
+        "salary": "£60,000 - £70,000",
+        "description": "Develop responsive user interfaces for global applications.",
+        "more_description": "<p>We are seeking a talented and motivated <strong>Web Developer<\/strong> to design, develop, and maintain engaging, high-performance websites and web applications. The ideal candidate has a strong understanding of modern web development practices, user experience design, and the ability to deliver solutions that meet business and client needs.<\/p><p><strong>Key Responsibilities:<\/strong><\/p><ul><li>Design, develop, and maintain responsive, user-friendly websites and web applications.<\/li><li>Write clean, efficient, and well-documented code using [HTML, CSS, JavaScript, and other frameworks\/languages].<\/li><li>Collaborate with designers, project managers, and other developers to ensure project objectives are met.<\/li><li>Optimize website performance, ensuring fast load times and scalability.<\/li><li>Troubleshoot and debug issues across various browsers and platforms.<\/li><li>Integrate and work with APIs and third-party services.<\/li><li>Maintain and improve existing web applications, adding new features as needed.<\/li><li>Stay updated with emerging trends and technologies in web development.<\/li><\/ul><p><strong>Required Qualifications:<\/strong><\/p><ul><li>Proven experience as a Web Developer or similar role.<\/li><li>Proficiency in front-end technologies like <strong>HTML, CSS, JavaScript<\/strong>, and frameworks.<\/li><li>Knowledge of back-end development using <strong>Node.js, PHP, Python, or similar technologies<\/strong><\/li><li>Web hosting environments, databases (e.g., <strong>MySQL, <\/strong>and CMS platforms,\u00a0<strong>WordPress, Drupal<\/strong>).<\/li><li>Strong problem-solving and debugging skills.<\/li><li>Excellent communication and teamwork abilities.<\/li><\/ul>",
+        "type": "Full-Time",
+        "posted_date": "2025-01-15",
+        "skills": ["JavaScript", "React", "CSS", "HTML5"],
+        "responsibilities": [
+          "Build and maintain scalable frontend systems.",
+          "Collaborate with UX/UI designers.",
+          "Optimize applications for speed and efficiency."
+        ],
+        "qualifications": [
+          "Bachelor's degree in Computer Science or related field.",
+          "2+ years of experience in frontend development."
+        ],
+        "apply_link": "https://example.com/apply/101"
+      },
+      {
+        "id": 102,
+        "title": "Backend Developer",
+        "location": "Sydney, Australia",
+        "salary": "AUD 90,000 - 110,000",
+        "description": "Develop and maintain backend services and APIs.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-13",
+        "skills": ["Node.js", "Express.js", "MongoDB", "Docker"],
+        "responsibilities": [
+          "Develop RESTful APIs.",
+          "Ensure the performance, quality, and responsiveness of applications.",
+          "Maintain and enhance existing backend infrastructure."
+        ],
+        "qualifications": [
+          "Bachelor's degree in Software Engineering or related field.",
+          "3+ years of experience with Node.js and API development."
+        ],
+        "apply_link": "https://example.com/apply/102"
+      },
+      {
+        "id": 103,
+        "title": "Cloud Engineer",
+        "location": "Berlin, Germany",
+        "salary": "€70,000 - €85,000",
+        "description": "Design and implement cloud-based infrastructure solutions.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-10",
+        "skills": ["AWS", "Azure", "Terraform", "Kubernetes"],
+        "responsibilities": [
+          "Manage cloud environments and services.",
+          "Develop infrastructure as code solutions.",
+          "Collaborate with cross-functional teams to ensure the scalability and security of cloud systems."
+        ],
+        "qualifications": [
+          "Bachelor's degree in Computer Science or related field.",
+          "Experience with cloud platforms such as AWS and Azure."
+        ],
+        "apply_link": "https://example.com/apply/103"
+      },
+      {
+        "id": 104,
+        "title": "Data Scientist",
+        "location": "Toronto, Canada",
+        "salary": "CAD 80,000 - 100,000",
+        "description": "Analyze large data sets and provide insights to guide business decisions.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-08",
+        "skills": ["Python", "SQL", "Machine Learning", "Data Analysis"],
+        "responsibilities": [
+          "Build predictive models.",
+          "Develop and maintain data pipelines.",
+          "Work with stakeholders to understand business problems and provide data-driven solutions."
+        ],
+        "qualifications": [
+          "Master's degree in Data Science, Statistics, or related field.",
+          "2+ years of experience in data science and machine learning."
+        ],
+        "apply_link": "https://example.com/apply/104"
+      },
+      {
+        "id": 105,
+        "title": "AI Researcher",
+        "location": "London, UK",
+        "salary": "£70,000 - £85,000",
+        "description": "Research and develop innovative AI models and algorithms.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-05",
+        "skills": ["Python", "Deep Learning", "NLP", "TensorFlow"],
+        "responsibilities": [
+          "Develop new AI models and algorithms.",
+          "Collaborate with engineering teams to implement AI solutions.",
+          "Publish findings in academic journals and present at conferences."
+        ],
+        "qualifications": [
+          "PhD in AI, Machine Learning, or related field.",
+          "Experience with deep learning frameworks such as TensorFlow and PyTorch."
+        ],
+        "apply_link": "https://example.com/apply/105"
+      }
+    ],
+    "Amazon": [
+      {
+        "id": 106,
+        "title": "Cloud Engineer",
+        "location": "Berlin, Germany",
+        "salary": "€70,000 - €85,000",
+        "description": "Design and maintain cloud infrastructure for scalability.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-07",
+        "skills": ["AWS", "Docker", "Kubernetes", "Terraform"],
+        "responsibilities": [
+          "Manage cloud-based infrastructure for the company.",
+          "Ensure high availability and disaster recovery.",
+          "Collaborate with engineering teams to deploy and manage applications."
+        ],
+        "qualifications": [
+          "Bachelor's degree in Information Technology or related field.",
+          "Experience with AWS, Docker, and Kubernetes."
+        ],
+        "apply_link": "https://example.com/apply/106"
+      },
+      {
+        "id": 107,
+        "title": "Big Data Engineer",
+        "location": "Paris, France",
+        "salary": "€80,000 - €100,000",
+        "description": "Develop and manage large-scale data processing systems.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-09",
+        "skills": ["Hadoop", "Spark", "Scala", "Data Engineering"],
+        "responsibilities": [
+          "Build and maintain big data infrastructure.",
+          "Collaborate with data scientists to implement data models.",
+          "Develop data pipelines for real-time data processing."
+        ],
+        "qualifications": [
+          "Master's degree in Computer Science or related field.",
+          "Experience with big data technologies like Hadoop and Spark."
+        ],
+        "apply_link": "https://example.com/apply/107"
+      },
+      {
+        "id": 108,
+        "title": "Solutions Architect",
+        "location": "Toronto, Canada",
+        "salary": "CAD 90,000 - 110,000",
+        "description": "Architect end-to-end cloud solutions for enterprise customers.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-04",
+        "skills": ["AWS", "Architecture", "Cloud Solutions", "Consulting"],
+        "responsibilities": [
+          "Design cloud architecture solutions for clients.",
+          "Work closely with clients to understand their needs.",
+          "Assist in the implementation and deployment of cloud-based solutions."
+        ],
+        "qualifications": [
+          "Bachelor's degree in Computer Science or related field.",
+          "5+ years of experience in designing cloud solutions."
+        ],
+        "apply_link": "https://example.com/apply/108"
+      },
+      {
+        "id": 109,
+        "title": "Product Manager",
+        "location": "Bangalore, India",
+        "salary": "INR 1,500,000 - 2,000,000",
+        "description": "Manage the lifecycle of product development from concept to delivery.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-06",
+        "skills": ["Product Strategy", "Agile", "Market Research", "Stakeholder Management"],
+        "responsibilities": [
+          "Define product vision and strategy.",
+          "Work with development teams to execute the product roadmap.",
+          "Communicate with customers to understand their needs."
+        ],
+        "qualifications": [
+          "Master's degree in Business Administration or related field.",
+          "5+ years of experience in product management."
+        ],
+        "apply_link": "https://example.com/apply/109"
+      },
+      {
+        "id": 110,
+        "title": "Security Engineer",
+        "location": "Sydney, Australia",
+        "salary": "AUD 120,000 - 140,000",
+        "description": "Implement and maintain security measures across all systems.",
+        "type": "Full-Time",
+        "posted_date": "2025-01-03",
+        "skills": ["Security", "Penetration Testing", "Encryption", "Compliance"],
+        "responsibilities": [
+          "Monitor and respond to security threats.",
+          "Implement security protocols and tools.",
+          "Work with teams to secure data and infrastructure."
+        ],
+        "qualifications": [
+          "Bachelor's degree in Cybersecurity or related field.",
+          "3+ years of experience in information security."
+        ],
+        "apply_link": "https://example.com/apply/110"
+      }
+    ]
+  }
+  
