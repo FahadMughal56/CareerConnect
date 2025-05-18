@@ -1,0 +1,10 @@
+asgiref==3.8.1
+Django==5.1.5
+djangorestframework==3.16.0
+itemadapter==0.9.0
+ollama==0.4.7
+psycopg2_binary==2.9.10
+pydantic==2.11.3
+Requests==2.32.3
+Scrapy==2.11.2
+scrapy_djangoitem==1.1.1

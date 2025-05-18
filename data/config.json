@@ -1,0 +1,27 @@
+{
+  "datasources": {
+    "jobs": {
+      "type": "postgres",
+      "connection": {
+        "host": "localhost",
+        "port": 5432,
+        "dbname": "job_recommendation_db",
+        "user": "job_user",
+        "password": "yourpassword"
+      },
+      "tables": {
+        "job": {
+          "description": "Job postings with company, location, skills, and apply link.",
+          "columns": {
+            "title": "Job title",
+            "company": "Company name",
+            "location": "Location of job",
+            "skills": "Required skills",
+            "description": "Job description",
+            "apply_link": "Direct link to apply for this job"
+          }
+        }
+      }
+    }
+  }
+}

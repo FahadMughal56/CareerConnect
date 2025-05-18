@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CareerConnect - Recruiter Signup{% endblock %}
+
+{% block content %}
+<main class="signup-container">
+    <div class="signup-box">
+        <div class="signup-content">
+            <div class="form-section">
+                <h2>Recruiter Registration</h2>
+                <p>Create your recruiter account to post and manage jobs.</p>
+                <form action="{% url 'recruiter_signup' %}" method="POST">
+                    {% csrf_token %}
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" id="phone_number" name="phone_number" placeholder="Enter phone number" required>
+
+                    <label for="company_website">Company Website</label>
+                    <input type="url" id="company_website" name="company_website" placeholder="e.g. https://yourcompany.com" required>
+
+                    <label for="company_description">Company Description</label>
+                    <textarea id="company_description" name="company_description" rows="4" placeholder="Brief description about your company" required></textarea>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+                    <button type="submit" class="signup-btn">Register as Recruiter</button>
+                </form>
+                <p class="login-text">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+            </div>
+            <div class="image-section">
+                <img src="{% static 'assets/signup-illustration.png' %}" alt="Recruiter Signup Illustration">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+    <style>
+        .form-container {
+            background: linear-gradient(135deg, #f9f9ff 0%, #f0e9ff 100%);
+        }
+        
+        .form-card {
+            box-shadow: 0 10px 25px rgba(108, 31, 189, 0.1);
+            border-top: 4px solid #6c1fbd;
+        }
+        
+        .tagify {
+            --tag-bg: #6c1fbd;
+            --tag-hover: #5a189a;
+            --tag-text-color: white;
+            --tags-border-color: #ddd;
+            --tag-remove-btn-color: white;
+        }
+        
+        .tagify__dropdown__item--active {
+            background: #6c1fbd;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Post a New Job</h2>
+                <p class="text-gray-600">Fill out the form below to create your job listing</p>
+            </div>
+            
+            <div class="form-container rounded-xl p-8 form-card bg-white">
+                <form method="POST" class="space-y-6">
+                    {% csrf_token %}
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Job Title -->
+                        <div class="col-span-2">
+                            <label for="id_title" class="block text-sm font-medium text-gray-700 mb-1">
+                                Job Title <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-heading text-gray-400"></i>
+                                </div>
+                                <input type="text" name="title" id="id_title" required class="pl-10 block w-full border border-gray-300 rounded-md shadow-sm py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="e.g. Senior Software Engineer">
+                            </div>
+                        </div>
+                        
+                        <!-- Company -->
+                        <div>
+                            <label for="id_company" class="block text-sm font-medium text-gray-700 mb-1">
+                                Company <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-building text-gray-400"></i>
+                                </div>
+                                <input type="text" name="company" id="id_company" required class="pl-10 block w-full border border-gray-300 rounded-md shadow-sm py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Your company name">
+                            </div>
+                        </div>
+                        
+                        <!-- Location -->
+                        <div>
+                            <label for="id_location" class="block text-sm font-medium text-gray-700 mb-1">
+                                Location <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-map-marker-alt text-gray-400"></i>
+                                </div>
+                                <input type="text" name="location" id="id_location" required class="pl-10 block w-full border border-gray-300 rounded-md shadow-sm py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="e.g. New York, NY or Remote">
+                            </div>
+                        </div>
+                        
+                        <!-- Salary -->
+                        <div>
+                            <label for="id_salary" class="block text-sm font-medium text-gray-700 mb-1">
+                                Salary Range
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-money-bill-wave text-gray-400"></i>
+                                </div>
+                                <input type="text" name="salary" id="id_salary" class="pl-10 block w-full border border-gray-300 rounded-md shadow-sm py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="e.g. $90,000 - $120,000">
+                            </div>
+                        </div>
+                        
+                        <!-- Industry -->
+                        <div>
+                            <label for="id_industry" class="block text-sm font-medium text-gray-700 mb-1">
+                                Industry
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-industry text-gray-400"></i>
+                                </div>
+                                <input type="text" name="industry" id="id_industry" class="pl-10 block w-full border border-gray-300 rounded-md shadow-sm py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="e.g. Technology, Healthcare">
+                            </div>
+                        </div>
+                        
+                        <!-- Job Type -->
+                        <div>
+                            <label for="id_type" class="block text-sm font-medium text-gray-700 mb-1">
+                                Job Type <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-briefcase text-gray-400"></i>
+                                </div>
+                                <select name="type" id="id_type" required class="pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 w-full">
+                                    <option value="">Select job type</option>
+                                    <option value="Full-Time">Full-Time</option>
+                                    <option value="Part-Time">Part-Time</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Category -->
+                        <div>
+                            <label for="id_category" class="block text-sm font-medium text-gray-700 mb-1">
+                                Category
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-tags text-gray-400"></i>
+                                </div>
+                                <input type="text" name="category" id="id_category" class="pl-10 block w-full border border-gray-300 rounded-md shadow-sm py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="e.g. Software Development">
+                            </div>
+                        </div>
+                        
+                        <!-- Apply Link -->
+                        <div class="col-span-2">
+                            <label for="id_apply_link" class="block text-sm font-medium text-gray-700 mb-1">
+                                Application URL <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-link text-gray-400"></i>
+                                </div>
+                                <input type="url" name="apply_link" id="id_apply_link" required class="pl-10 block w-full border border-gray-300 rounded-md shadow-sm py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="https://yourcompany.com/careers">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills -->
+                    <div>
+                        <label for="skills-input" class="block text-sm font-medium text-gray-700 mb-1">
+                            Required Skills
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-tools text-gray-400"></i>
+                            </div>
+                            <input type="text" name="skills" id="skills-input" class="pl-10 block w-full border border-gray-300 rounded-md shadow-sm py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Add skills separated by commas">
+                        </div>
+                        <p class="mt-1 text-sm text-gray-500">Add multiple skills separated by commas (e.g. Python, JavaScript, Django)</p>
+                    </div>
+                    
+                    <!-- Description -->
+                    <div>
+                        <label for="id_description" class="block text-sm font-medium text-gray-700 mb-1">
+                            Job Description <span class="text-red-500">*</span>
+                        </label>
+                        <textarea name="description" id="id_description" rows="4" required class="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full border border-gray-300 rounded-md" placeholder="Detailed description of the job responsibilities"></textarea>
+                    </div>
+                    
+                    <!-- More Description -->
+                    <div>
+                        <label for="id_more_description" class="block text-sm font-medium text-gray-700 mb-1">
+                            Additional Information
+                        </label>
+                        <textarea name="more_description" id="id_more_description" rows="4" class="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full border border-gray-300 rounded-md" placeholder="Any additional information about the job (optional)"></textarea>
+                    </div>
+                    
+                    <div class="flex items-center justify-between pt-6">
+
+                        <button type="submit" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Post Job
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Initialize Tagify on skills input
+            const skillsInput = document.querySelector("#skills-input");
+            if (skillsInput) {
+                new Tagify(skillsInput, {
+                    dropdown: {
+                        enabled: 0, // show suggestions dropdown on focus
+                        maxItems: 10,
+                        classname: "extra-properties",
+                        highlightFirst: true
+                    }
+                });
+            }
+            
+            // Add character counters to textareas
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                const charCounter = document.createElement('div');
+                charCounter.className = 'text-right text-xs text-gray-500 mt-1';
+                textarea.parentNode.appendChild(charCounter);
+                
+                textarea.addEventListener('input', function() {
+                    charCounter.textContent = `${this.value.length}/5000 characters`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
