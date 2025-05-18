@@ -10,84 +10,87 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
-    <style>
-    .heading {
-        display: block; /* Force headings to new lines */
-        margin: 12px 0;
-        font-weight: bold; /* Ensure boldness */
-    }
-    </style>
     {% block extra_css %}{% endblock %}
 </head>
 
 <body>
     <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="{% url 'index' %}"><img src="{% static 'assets/logo.png' %}" alt="CareerConnect"></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Find Jobs <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <div class="dropdown-column">
-                            <li><a href="#">UX Designer</a></li>
-                            <li><a href="#">Software Engineer</a></li>
-                            <li><a href="#">Marketing Specialist</a></li>
-                            <li><a href="#">Full Stack Developer</a></li>
-                            <li><a href="#">Product Manager</a></li>
-                            <li><a href="#">Data Scientist</a></li>
-                        </div>
-                        <div class="dropdown-column">
-                            <li><a href="#">Project Manager</a></li>
-                            <li><a href="#">Business Analyst</a></li>
-                            <li><a href="#">Graphic Designer</a></li>
-                            <li><a href="#">Cybersecurity Analyst</a></li>
-                            <li><a href="#">HR Specialist</a></li>
-                            <li><a href="#">Finance Manager</a></li>
-                        </div>
-                    </ul>
-                </li>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'assets/logo.png' %}" alt="CareerConnect">
+            </a>
+        </div>
 
-            </ul>
-            <a href="{% url 'login' %}"><button class="login-btn">Login</button></a>
-        </nav>
-    </header>
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#">Find Jobs <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <!-- You can add dropdown job filters or categories here -->
+                </ul>
+            </li>
+
+            {% if user.is_authenticated %}
+                {% if user.user_type == 'recruiter' %}
+                    <li><a href="{% url 'recruiter_profile' %}">My Profile</a></li>
+                    <li><a href="{% url 'post_job_view' %}">Post Job</a></li>
+                {% else %}
+                    <li><a href="{% url 'profile' %}">My Profile</a></li>
+                {% endif %}
+                <li>
+                    <form action="{% url 'logout' %}" method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="login-btn" style="background: none; border: none; padding: 0; margin: 0; font: inherit; cursor: pointer; color: inherit;">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}" class="login-btn">Login</a></li>
+                <li><a href="{% url 'signup' %}" class="signup-btn">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+
+
+
 
     <main>
         {% block content %}{% endblock %}
     </main>
+
     <section class="chatBot">
+        <button id="chatbot-toggle-btn" class="chatbot-btn">
+            <i class="fa-solid fa-comments"></i>
+            <p>CareerBuddy</p>
+        </button>
 
-    <button id="chatbot-toggle-btn" class="chatbot-btn">
-        <i class="fa-solid fa-comments"></i>
-        <p>CareerBuddy</p>
-    </button>
-
-    <!-- Chatbot Popup -->
-    <div class="chatbot-popup" id="chatbot-popup">
-        <div class="chat-header">
-            <span>Chatbot | CareerConnect</span>
-            <button id="close-btn">&times;</button>
-        </div>
-        <div class="chat-box" id="chat-box">
-            {% for message in chat_messages %}
-                <div class="{% if message.sender == 'user' %}user-message{% else %}bot-message{% endif %}">
-                    {{ message.text|safe }}  <!-- HTML rendered safely -->
-                </div>
-            {% endfor %}
-        </div>
-        <form id="chat-form">
-            {% csrf_token %}
-            <div class="chat-input">
-                <input type="text" name="user_message" id="user-input" placeholder="Type a message..." required>
-                <button type="submit" id="send-btn">Send</button>
+        <!-- Chatbot Popup -->
+        <div class="chatbot-popup" id="chatbot-popup">
+            <div class="chat-header">
+                <span>Chatbot | CareerConnect</span>
+                <button id="close-btn">&times;</button>
             </div>
-        </form>
-    </div>
-</section>
-
+            <div class="chat-box" id="chat-box">
+                {% for message in chat_messages %}
+                    <div class="{% if message.sender == 'user' %}user-message{% else %}bot-message{% endif %}">
+                        {{ message.text }}
+                    </div>
+                {% endfor %}
+            </div>
+            <form id="chat-form">
+                {% csrf_token %}
+                <div class="chat-input">
+                    <input type="text" name="user_message" id="user-input" placeholder="Type a message..." required>
+                    <button type="submit" id="send-btn">Send</button>
+                </div>
+            </form>
+        </div>
+    </section>
 
     <footer class="site-footer">
         <div class="footer-container">
@@ -128,8 +131,7 @@
         </div>
     </footer>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
     $(document).ready(function() {
         // Open chatbot popup
@@ -215,9 +217,6 @@
         }
     });
 </script>
-
-
-
 </body>
 
 </html>

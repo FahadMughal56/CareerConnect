@@ -29,10 +29,11 @@ class SaveToDatabasePipeline:
             posted_date=item['posted_date'],
             description=item.get('description', ''), # Optional
             more_description=item.get('more_description', ''),  # Optional
-            salary=item.get('salary', None),  # Optional
-            benefits=item.get('benefits', []),  # Optional
-            requirements=item.get('requirements', []),  # Optional
-            responsibilities=item.get('responsibilities', []),  # Optional
+            salary=item.get('salary', ''),  # Optional
+            industry=item.get('industry', ''),
+            # benefits=item.get('benefits', []),  # Optional
+            # requirements=item.get('requirements', []),  # Optional
+            # responsibilities=item.get('responsibilities', []),  # Optional
             skills=item.get('skills', []),  # Optional
         )
         job.save()  # Save the job into the database

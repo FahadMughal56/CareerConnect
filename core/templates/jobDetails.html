@@ -32,8 +32,8 @@
   <!-- Job Description Section -->
   <div class="job-description">
     <h2>Job Description</h2>
-    <p>{% if job.description %}{{ job.description }}{% endif %}</p>
-
+    <p>{{ job.description|default:"No description available for this job." }}</p>
+    
     <!-- More Description Section -->
     <div class="more-description">
       <!-- Render the more_description field as raw HTML -->
@@ -57,10 +57,18 @@
   {% endif %}
 
   <!-- Apply Section -->
-  <div class="apply-section">
-    <button class="apply-button">
-      <i class="fas fa-paper-plane"></i> Apply Now
-    </button>
-  </div>
+<div class="apply-section">
+  {% if user.is_authenticated and user.user_type == 'job_seeker' %}
+  {% if job.recruiter %}
+    <form method="POST" action="{% url 'apply_to_job' job.id %}">
+        {% csrf_token %}
+        <button type="submit">Apply</button>
+    </form>
+  {% else %}
+    <a href="{{ job.apply_link }}" target="_blank" class="btn btn-primary">Apply</a>
+  {% endif %}
+{% endif %}
+</div>
+
 </div>
 {% endblock %}

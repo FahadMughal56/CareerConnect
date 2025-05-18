@@ -18,7 +18,9 @@ SECRET_KEY = 'django-insecure-ph020!wavs=4%@vqr7i%17it5oaq$6160!da7kl06e01-z5tmp
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+import os
+MEDIA_URL = '/resumes/'  # This will be the URL prefix
+MEDIA_ROOT = os.path.join(BASE_DIR, 'resumes')  # This is where resumes are stored
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,11 +43,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'CareerConnect.urls'
-
+import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'core/templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'core', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

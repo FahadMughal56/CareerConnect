@@ -1,0 +1,268 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerConnect - Sign Up</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'signup.css' %}">
+</head>
+
+<body class="body-grid">
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Illustration Section -->
+            <div class="left-section">
+                <div class="branding">
+                    <h1>CareerConnect</h1>
+                    <p class="tagline">Your gateway to dream careers</p>
+                </div>
+
+                <div class="illustration">
+                    <img src="{% static 'assets/signup-page.png' %}" alt="Career professionals">
+                </div>
+
+                <div class="join-text">
+                    <h2>Join Our Professional Network</h2>
+                    <p>Connect with top employers and find your perfect career match with our AI-powered platform.</p>
+                </div>
+            </div>
+
+            <!-- Form Section -->
+            <div class="right-section">
+                <div class="form-header">
+                    <h2>Create Account</h2>
+                    <a href="{% url 'login' %}">Already a member? Sign in</a>
+                </div>
+
+                <form id="signupForm" method="POST" enctype="multipart/form-data" class="form">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="full_name">Full Name <span>*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" id="full_name" name="full_name" required placeholder="Enter your full name">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span>*</span></label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+    <label for="password">Password <span>*</span></label>
+    <div class="input-wrapper">
+        <input type="password" id="password" name="password" required placeholder="Enter a password">
+        <i class="fas fa-lock"></i>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="password_confirmation">Confirm Password <span>*</span></label>
+    <div class="input-wrapper">
+        <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Confirm your password">
+        <i class="fas fa-lock"></i>
+    </div>
+</div>
+
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <div class="input-wrapper">
+                            <input type="tel" id="phone_number" name="phone_number" placeholder="+1 (123) 456-7890">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="education_level">Education Level</label>
+                        <div class="input-wrapper">
+                            <select id="education_level" name="education_level">
+                                <option value="">Select your highest education</option>
+                                <option value="high-school">High School</option>
+                                <option value="associate">Associate Degree</option>
+                                <option value="bachelor">Bachelor's Degree</option>
+                                <option value="master">Master's Degree</option>
+                                <option value="phd">PhD</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job_preference">Job Preference</label>
+                        <div class="input-wrapper">
+                            <select id="job_preference" name="job_preference">
+                                <option value="">Select preferred job type</option>
+                                <option value="full-time">Full-Time</option>
+                                <option value="part-time">Part-Time</option>
+                                <option value="remote">Remote</option>
+                                <option value="freelance">Freelance</option>
+                                <option value="internship">Internship</option>
+                            </select>
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry_interest">Industry Interest</label>
+                        <div class="input-wrapper">
+                            <select id="industry_interest" name="industry_interest">
+                                <option value="">Select industry of interest</option>
+                                <option value="it">Information Technology</option>
+                                <option value="finance">Finance</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="design">Design</option>
+                            </select>
+                            <i class="fas fa-industry"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience_level">Experience Level</label>
+                        <div class="input-wrapper">
+                            <select id="experience_level" name="experience_level">
+                                <option value="">Select your experience</option>
+                                <option value="Junior">Junior</option>
+                                <option value="Mid">Mid-Level</option>
+                                <option value="Senior">Senior</option>
+                            </select>
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+    <label for="resume">Upload Resume</label>
+    <div id="uploadContainer" class="upload-area">
+        <!-- Removed the hidden class to make the file input functional -->
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" style="display: none;">
+        <div class="upload-content" onclick="document.getElementById('resume').click();">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Drag & drop your resume here or click to browse</p>
+            <p class="support-text">Supports: PDF, DOC, DOCX (Max 5MB)</p>
+        </div>
+        <div id="progressContainer" class="progress hidden">
+            <div class="progress-bar"></div>
+            <p id="progressText">Uploading: 0%</p>
+        </div>
+        <div id="fileInfo" class="file-info hidden"></div>
+    </div>
+</div>
+
+<script>
+    // Show selected file name
+    document.getElementById('resume').addEventListener('change', function (event) {
+        var fileInput = event.target;
+        var fileName = fileInput.files[0].name;
+        document.getElementById('fileInfo').textContent = 'Selected file: ' + fileName;
+        document.getElementById('fileInfo').classList.remove('hidden');
+    });
+
+    // Drag and drop support
+    var uploadArea = document.getElementById('uploadContainer');
+    uploadArea.addEventListener('dragover', function (event) {
+        event.preventDefault();
+        uploadArea.classList.add('dragging');
+    });
+
+    uploadArea.addEventListener('dragleave', function () {
+        uploadArea.classList.remove('dragging');
+    });
+
+    uploadArea.addEventListener('drop', function (event) {
+        event.preventDefault();
+        uploadArea.classList.remove('dragging');
+        var files = event.dataTransfer.files;
+        if (files.length > 0) {
+            document.getElementById('resume').files = files;
+            var fileName = files[0].name;
+            document.getElementById('fileInfo').textContent = 'Selected file: ' + fileName;
+            document.getElementById('fileInfo').classList.remove('hidden');
+        }
+    });
+
+    // Show loading overlay when form is submitted
+    document.getElementById('signupForm').addEventListener('submit', function () {
+        document.getElementById('loadingOverlay').classList.remove('hidden');
+    });
+</script>
+<script>
+document.getElementById('resume').addEventListener('change', function () {
+    const resumeInput = this.files[0];
+    if (!resumeInput) return;
+
+    // ✅ Show overlay before uploading
+    document.getElementById('loadingOverlay').classList.remove('hidden');
+
+    const formData = new FormData();
+    formData.append('resume', resumeInput);
+
+    fetch('{% url "parse_resume_ajax" %}', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // ✅ Hide overlay after processing
+        document.getElementById('loadingOverlay').classList.add('hidden');
+
+        if (data.error) return alert(data.error);
+
+        // Autofill fields
+        if (data.full_name) document.getElementById('full_name').value = data.full_name;
+        if (data.email) document.getElementById('email').value = data.email;
+        if (data.phone_number) document.getElementById('phone_number').value = data.phone_number;
+        if (data.education_level) document.getElementById('education_level').value = data.education_level;
+        document.getElementById('industry_interest').value = data.industry_interest || 'it';
+        document.getElementById('job_preference').value = data.job_preference || 'full-time';
+        document.getElementById('experience_level').value = data.experience_level || 'Mid';
+    })
+    .catch(error => {
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        console.error('Resume parse error:', error);
+    });
+});
+</script>
+
+
+                    <div class="form-footer">
+                        <div class="checkbox-group">
+                            <input id="terms" name="terms" type="checkbox" required>
+                            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Sign Up & Start Your Career Journey</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="fixed inset-0 bg-white/80 flex items-center justify-center z-[9999] hidden">
+  <div class="text-center">
+    <i class="fas fa-spinner fa-spin text-purple-600 text-4xl mb-4"></i>
+    <p class="text-gray-700 font-semibold text-lg">Parsing resume, please wait...</p>
+  </div>
+</div>
+
+</body>
+</html>

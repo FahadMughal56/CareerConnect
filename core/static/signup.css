@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body.body-grid {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+/* Background blobs */
+.bg-blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(108, 31, 189, 0.1) 0%, rgba(108, 31, 189, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.blob-1 {
+    top: -200px;
+    left: -200px;
+}
+
+.blob-2 {
+    bottom: -200px;
+    right: -200px;
+}
+
+/* Container */
+.container {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* Flex Layout */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .content-wrapper {
+        flex-direction: row;
+    }
+}
+
+/* Left Section */
+.left-section {
+    background: linear-gradient(135deg, #c8a5f0, #6c1fbd);
+    color: #ffffff;
+    padding: 40px 30px;
+    flex: 1;
+    text-align: center;
+}
+
+.branding h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    color: #e5d8f7;
+    font-size: 1rem;
+}
+
+.illustration img {
+    max-width: 100%;
+    height: auto;
+    margin: 30px 0;
+}
+
+.join-text h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.join-text p {
+    font-size: 1rem;
+    color: #e5d8f7;
+}
+
+/* Right Section */
+.right-section {
+    padding: 40px 30px;
+    flex: 1;
+    background: #ffffff;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    font-size: 2rem;
+    color: #333333;
+    font-weight: bold;
+}
+
+.form-header a {
+    font-size: 0.9rem;
+    color: #6c1fbd;
+    text-decoration: none;
+}
+
+.form-header a:hover {
+    color: #57179b;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group span {
+    color: red;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    font-size: 1rem;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    background-color: #ffffff;
+    border-color: #6c1fbd;
+    outline: none;
+}
+
+.input-wrapper i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none;
+}
+
+/* Upload Area */
+.upload-area {
+    border: 2px dashed #ccc;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.upload-area:hover {
+    background-color: #f9f9f9;
+    border-color: #6c1fbd;
+}
+
+.upload-content i {
+    font-size: 2rem;
+    color: #6c1fbd;
+}
+
+.upload-content p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.support-text {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Progress Bar */
+.progress {
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 10px;
+    width: 0%;
+    background-color: #6c1fbd;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+/* Footer */
+.form-footer {
+    margin-top: 30px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    accent-color: #6c1fbd;
+}
+
+.checkbox-group label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.checkbox-group a {
+    color: #6c1fbd;
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.btn-primary {
+    background-color: #6c1fbd;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #57179b;
+}
+
+/* Hidden */
+.hidden {
+    display: none;
+}

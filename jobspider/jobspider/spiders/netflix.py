@@ -7,11 +7,9 @@ from ollama import chat
 from pydantic import BaseModel
 
 class JobDetails(BaseModel):
-    salary: float
-    benefits: list[str]
-    requirements: list[str]
-    responsibilities: list[str]
+    salary: str
     skills: list[str]
+    industry: str
 
 class NetflixSpider(scrapy.Spider):
     name = "netflix"

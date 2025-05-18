@@ -200,7 +200,43 @@ body {
   color: #666;
   margin-bottom: 30px;
 }
+/* recommendation Jobs Section Styles */
+.recommended-jobs {
+  text-align: center;
+  padding: 40px;
+}
 
+.recommended-jobs h1 {
+  font-size: 28px;
+  font-weight: bolder;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.recommended-jobs p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* category detail Styles */
+.category-section {
+  text-align: center;
+  padding: 40px;
+}
+
+.category-section h1 {
+  font-size: 28px;
+  font-weight: bolder;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.category-section p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
 .job-cards-container {
   display: flex;
   justify-content: center;
@@ -1038,6 +1074,299 @@ hr {
 
 
 
+/* Font Awesome CDN (include in your <head> if not already) */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+
+.job-categories-section {
+    background: #f9f9ff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #6c1fbd;
+    margin-bottom: 40px;
+}
+
+.category-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    justify-items: center;
+}
+
+/* Base Card Style */
+.card {
+    width: 220px;
+    height: 300px;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 24px 36px rgba(0, 0, 0, 0.11), 0 24px 46px rgba(108, 31, 189, 0.35);
+}
+
+.card .overlay {
+    width: 118px;
+    height: 118px;
+    border-radius: 50%;
+    background: #6c1fbd;
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    z-index: 0;
+    transition: transform 0.3s ease-out;
+    transform: scale(0);
+}
+
+.card:hover .overlay {
+    transform: scale(4);
+}
+
+.card .circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #6c1fbd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-out;
+}
+
+.card:hover .circle {
+    background: #6c1fbd;
+}
+
+.card .circle i {
+    font-size: 2rem;
+    color: #6c1fbd;
+    z-index: 10000;
+    transition: color 0.3s ease-out;
+}
+
+.card:hover .circle i {
+    color: #fff;
+}
+
+.card p {
+    font-size: 16px;
+    color: #4c5656;
+    margin-top: 30px;
+    z-index: 2;
+    transition: color 0.3s ease-out;
+}
+
+.card:hover p {
+    color: #fff;
+}
+
+
+.how-it-works {
+  background: #f8f5ff;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 2.8rem;
+  color: #6c1fbd;
+  margin-bottom: 10px;
+}
+
+.how-it-works .subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+  color: #555;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.step-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(108, 31, 189, 0.1);
+  padding: 30px 20px;
+  width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(108, 31, 189, 0.15);
+}
+
+.step-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.step-card h3 {
+  font-size: 1.5rem;
+  color: #6c1fbd;
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+
+
+/* Career Insights Section */
+.career-insights {
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #f9f6ff, #ffffff);
+  text-align: center;
+}
+
+.career-insights .section-title {
+  font-size: 2.5rem;
+  color: #6c1fbd;
+  margin-bottom: 10px;
+}
+
+.career-insights .section-subtitle {
+  font-size: 1.2rem;
+  color: #4c4c4c;
+  margin-bottom: 50px;
+}
+
+.insights-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.insight-card {
+  width: 280px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(108, 31, 189, 0.1);
+  transition: 0.3s ease-in-out;
+  border-top: 6px solid #6c1fbd;
+}
+
+.insight-card i {
+  font-size: 40px;
+  color: #6c1fbd;
+  margin-bottom: 20px;
+}
+
+.insight-card h3 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.insight-card p {
+  font-size: 16px;
+  color: #5a5a5a;
+}
+
+.insight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(108, 31, 189, 0.2);
+}
+
+/* Color variations */
+.insight-card.growth {
+  border-top-color: #a26ce0;
+}
+
+.insight-card.salary {
+  border-top-color: #7c4fd7;
+}
+
+.insight-card.skills {
+  border-top-color: #5c3aa0;
+}
+.search-bar {
+    position: relative;
+}
+
+#suggestions-list {
+    position: absolute;
+    top: 100%; /* Places dropdown right below the input */
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 4px;
+    display: none;
+}
+
+#suggestions-list.show {
+    display: block;
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+.navbar a {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.navbar a:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* For the buttons inside the navbar */
+.navbar .login-btn, .navbar .signup-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-left: 10px;
+    background-color: #6c1fbd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.navbar .login-btn:hover, .navbar .signup-btn:hover {
+    background-color: #6c1fbd;
+}
 
 
 
